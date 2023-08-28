@@ -92,4 +92,4 @@ def pca(version):
         cv2.imwrite('{}/{}'.format(os.path.join(predict_folder, 'cv2_vis2'), imgp), result)
 
 
-pca('7')
+# pca('7')

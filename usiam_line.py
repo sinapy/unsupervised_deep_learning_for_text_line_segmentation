@@ -5,29 +5,29 @@ from __future__ import print_function
 # -*- coding: utf-8 -*-
 import numpy as np
 import random
-from keras.layers import Input, Flatten, Dense, Dropout, Lambda, merge,Activation
+from keras.layers import Add, Multiply, Average, Maximum, Concatenate, Dot
+from keras.layers import Input, Flatten, Dense, Dropout, Lambda,Activation
 from keras.callbacks import ModelCheckpoint, EarlyStopping,ReduceLROnPlateau,CSVLogger
 from keras.optimizers import Adam,SGD,RMSprop
 import os
 from keras.models import Model, load_model, Sequential
-from keras.layers.merge import concatenate
-from keras.layers.convolutional import Conv2D
-from keras.layers.convolutional import MaxPooling2D
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
 from sklearn.metrics import accuracy_score as accuracy
 import cv2
 from keras import backend as K
 from keras.regularizers import l2
 from random import shuffle
-import make_pairs as mp
+import make_pairs_line as mp
 from keras.callbacks import Callback
-import vis_prediction_line as vp
+import vis_prediction_ahte_line as vp
 
 
 os.environ["CUDA_VISIBLE_DEVICES"]="2"
 input_shape=(200,200,1)
-train_set='ahte_train_test'
+train_set='ahte_test'
 train_set_size=30000
-validation_set='ahte_train_test'
+validation_set='ahte_test'
 validation_set_size=3000
 version='11'
 learning_rate=0.00001
@@ -133,7 +133,7 @@ else:
     input_b = Input(shape=input_shape)
     processed_a = base_network(input_a)
     processed_b = base_network(input_b)
-    fc6=concatenate([processed_a, processed_b])
+    fc6=Concatenate()([processed_a, processed_b])
     fc7=Dense(1024, activation = 'relu')(fc6)
     fc8=Dense(1024, activation = 'relu')(fc7)
     fc9=Dense(1, activation='sigmoid')(fc8)
