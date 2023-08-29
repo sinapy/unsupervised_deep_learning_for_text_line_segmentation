@@ -32,7 +32,7 @@ def select_cluster(org_folder,vis_folder,page_name,line_folder,overlap_folder):
     cv2.imwrite(os.path.join(line_folder,page_name),dilation)
     cv2.imwrite(os.path.join(overlap_folder,page_name),dilation&thresh)
 
-vis_folder='ahte_line_7_10/cv2_vis2'
+vis_folder='ahte_line11_60/cv2_vis2'
 org_folder='ahte_test'
 line_folder='ahte_line_5'
 overlap_folder='ahte_line_overlap_5'

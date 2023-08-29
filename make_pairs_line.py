@@ -7,7 +7,7 @@ SHOW_RESULTS = False
 
 
 def get_backpaired_patches(img, thresh):
-    patch_size = 70
+    patch_size = 150
     i_x, i_y = 0, 0
     x_margin, y_margin = 5, 5
 
@@ -72,7 +72,7 @@ def calculate_cropped_component_average(img):
 
 
 def get_different_patches(img, thresh):
-    patch_size = 70
+    patch_size = 150
     epsilon = 0.0001
     ccs = cv2.connectedComponentsWithStatsWithAlgorithm(thresh, 4, cv2.CV_32S, cv2.CCL_GRANA)
     cc_number = ccs[0]
@@ -133,7 +133,7 @@ def get_different_patches(img, thresh):
 
 
 def get_same_patches(img, thresh):
-    patch_size = 70
+    patch_size = 150
     epsilon = 0.0001
     ccs = cv2.connectedComponentsWithStatsWithAlgorithm(thresh, 4, cv2.CV_32S, cv2.CCL_GRANA)
     cc_number = ccs[0]
